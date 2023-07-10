@@ -1,0 +1,5 @@
+node_modules
+fixtures/*
+!fixtures/.gitkeep
+log/*
+!log/.gitkeep
