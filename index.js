@@ -9,7 +9,7 @@ const timers              = require('timers/promises');
 
 program
     .option('-w, --write <path>', 'Write requests to this path (use %date% for timestamp)')
-    .option('-r, --response <path>', 'Read response JSON from this path (instead of echoing the request)')
+    .option('-r, --response <path>', 'Read response from this path (instead of echoing the request)')
     .option('-j, --json-path <string>', 'Use only the part of the incoming request body at this JSON path', '$')
     .option('-s, --status <code>', 'HTTP response code', 200)
     .option('-d, --delay <ms>', 'Sleep this many seconds during each request', 0)
