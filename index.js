@@ -1,4 +1,5 @@
 const fs                  = require('fs');
+const path                = require('path');
 const bodyParser          = require('body-parser');
 const morgan              = require('morgan');
 const express             = require('express');
@@ -62,7 +63,8 @@ app.all('*', expressAsyncHandler(async (req, res) => {
         fs.writeFileSync(path, req.rawBody);
     }
     if (opts.response) {
-        const file  = (await fs.promises.readFile(opts.response)).toString();
+        const file = (await fs.promises.readFile(opts.response)).toString();
+        res.header('Content-Disposition', 'attachment; filename="' + path.basename(opts.response) + '"');
         const lines = file.split(/\r?\n/);
         for (let i = 0; i < lines.length; i++) {
             const isLastLine = i === lines.length - 1;
